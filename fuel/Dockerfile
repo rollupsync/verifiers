@@ -12,4 +12,6 @@ WORKDIR /src
 
 RUN npm ci && npm run bootstrap
 
+RUN apk del git python3 make g++
+
 ENTRYPOINT ["node", "/src/packages/client/src"]
