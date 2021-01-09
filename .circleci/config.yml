@@ -1,10 +1,10 @@
 version: 2.1
 workflows:
-  test_app:
+  images:
     jobs:
       - fuel
 jobs:
-  build:
+  fuel:
     machine:
       image: ubuntu-2004:202010-01
     steps:
