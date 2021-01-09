@@ -1,0 +1,16 @@
+version: 2.1
+workflows:
+  test_app:
+    jobs:
+      - fuel
+jobs:
+  build:
+    machine:
+      image: ubuntu-2004:202010-01
+    steps:
+      - checkout
+      - run: docker build ./fuel
+      - run: docker tag $(docker build ./fuel -q) rollupsync/fuel:latest
+      - run: |
+        docker login --username jchancehud --password $DOCKER_TOKEN
+        docker push rollupsync/fuel:latest
