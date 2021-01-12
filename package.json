@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/rollupsync/scripts/issues"
   },
-  "homepage": "https://github.com/rollupsync/scripts#readme"
+  "homepage": "https://github.com/rollupsync/scripts#readme",
+  "dependencies": {
+    "ethereum-keystore": "0.0.3"
+  }
 }

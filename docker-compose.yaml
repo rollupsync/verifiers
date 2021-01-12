@@ -1,10 +1,13 @@
 version: "3"
 services:
   fuel:
-    image: rollupsync/fuel:v1.0.1
+    image: 01527ca5a394
     command: "--produce -e --proxy=false -n mainnet -r https://mainnet.infura.io/v3/5b122dbc87ed4260bf9a2031e8a0e2aa"
     volumes:
       - "./wallet.enc.json:/src/.fuel-wallet.json"
-    environment:
-      - fuel_v1_default_password=password
-    
+    secrets:
+      - wallet_password
+
+secrets:
+  wallet_password:
+    file: ./wallet_password.secret
