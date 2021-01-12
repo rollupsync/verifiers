@@ -1,7 +1,7 @@
 version: "3"
 services:
   fuel:
-    image: 01527ca5a394
+    image: rollupsync/fuel:v1.0.1
     command: "--produce -e --proxy=false -n mainnet -r https://mainnet.infura.io/v3/5b122dbc87ed4260bf9a2031e8a0e2aa"
     volumes:
       - "./wallet.enc.json:/src/.fuel-wallet.json"
