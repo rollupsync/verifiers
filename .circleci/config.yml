@@ -9,7 +9,18 @@ jobs:
       image: ubuntu-2004:202010-01
     steps:
       - checkout
-      - run: docker build ./fuel
-      - run: docker tag $(docker build ./fuel -q) rollupsync/fuel:latest
-      - run: docker login --username jchancehud --password $DOCKER_TOKEN
-      - run: docker push rollupsync/fuel:latest
+      - run:
+          name: Should Build?
+          command: git log -1 --pretty=%B | cat | grep "\[build fuel\]" || circleci-agent step halt
+      - run:
+          name: Build Image
+          command: docker build ./fuel
+      - run:
+          name: Tag Image
+          command: docker tag $(docker build ./fuel -q) rollupsync/fuel:latest
+      - run:
+          name: Docker Auth
+          command: echo $DOCKER_TOKEN | docker login --username jchancehud --password-stdin
+      - run:
+          name: Push Image
+          command: docker push rollupsync/fuel:latest
