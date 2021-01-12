@@ -1,4 +1,4 @@
-FROM alpine:latest
+FROM alpine:latest as buildstage
 MAINTAINER Chance Hudson
 
 RUN apk add nodejs-npm git python3 make g++
@@ -10,8 +10,14 @@ RUN git clone \
   https://github.com/FuelLabs/fuel-js.git /src
 WORKDIR /src
 
-RUN npm ci && npm run bootstrap
+RUN npm ci && \
+  npm run bootstrap
 
-RUN apk del git python3 make g++
+FROM alpine:latest
 
-ENTRYPOINT ["node", "/src/packages/client/src"]
+RUN apk add --no-cache nodejs-npm
+
+COPY --from=buildstage /src /src
+COPY ./entrypoint.sh /entrypoint.sh
+
+ENTRYPOINT ["sh", "/entrypoint.sh"]
