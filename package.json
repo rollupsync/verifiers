@@ -1,5 +1,5 @@
 {
-  "name": "scripts",
+  "name": "verifiers",
   "version": "0.0.1",
   "description": "",
   "main": "index.js",
@@ -9,14 +9,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/rollupsync/scripts.git"
+    "url": "git+https://github.com/rollupsync/verifiers.git"
   },
   "author": "Chance Hudson",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/rollupsync/scripts/issues"
+    "url": "https://github.com/rollupsync/verifiers/issues"
   },
-  "homepage": "https://github.com/rollupsync/scripts#readme",
+  "homepage": "https://github.com/rollupsync/verifiers#readme",
   "dependencies": {
     "ethereum-keystore": "0.0.3"
   }
