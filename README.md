@@ -9,3 +9,15 @@ Docker images for optimistic rollups.
 Use `npm run wallet` to create a wallet. The wallet will be stored in `wallet.enc.json` and the password in `wallet_password.secret`.
 
 These will be passed to docker using the secrets functionality. The same wallet will be used for all verifiers.
+
+#### Running
+
+The following commands should be used to start, stop, and view logs of verifiers.
+
+To start the verifier daemons: `npm run start mainnet`
+
+To stop them: `npm run stop mainnet`
+
+To view logs: `npm run logs mainnet`
+
+`mainnet` may be replaced with any supported network name, currently `mainnet` and `rinkeby` are supported.

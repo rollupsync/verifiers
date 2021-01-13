@@ -4,10 +4,10 @@ services:
     image: rollupsync/fuel:v1.0.1
     command: "--produce -e --proxy=false -n mainnet -r https://mainnet.rollupsync.com"
     volumes:
-      - "./wallet.enc.json:/src/.fuel-wallet.json"
+      - "../wallet.enc.json:/src/.fuel-wallet.json"
     secrets:
       - wallet_password
 
 secrets:
   wallet_password:
-    file: ./wallet_password.secret
+    file: ../wallet_password.secret

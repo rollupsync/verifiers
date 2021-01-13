@@ -4,6 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "sh scripts/start.sh",
+    "stop": "sh scripts/stop.sh",
+    "logs": "sh scripts/logs.sh",
     "wallet": "node scripts/create_wallet",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
