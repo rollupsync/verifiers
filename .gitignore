@@ -4,3 +4,4 @@ node_modules
 *.tmp
 *.enc.json
 *.secret
+docker-compose.yaml

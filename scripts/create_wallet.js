@@ -5,8 +5,8 @@ const readline = require('readline')
 const { Writable } = require('stream')
 const crypto = require('crypto')
 
-const walletPath = path.join(__dirname, '..', 'wallet.enc.json')
-const passwordPath = path.join(__dirname, '..', 'wallet_password.secret')
+const walletPath = path.join(process.cwd(), 'wallet.enc.json')
+const passwordPath = path.join(process.cwd(), 'wallet_password.secret')
 
 ;(async () => {
   try {
@@ -23,7 +23,7 @@ async function createWallet() {
     console.log('Wallet detected, aborting...')
     process.exit(0)
   }
-  const _password = await readPassword('Enter a password (leave blank to auto-generate):')
+  const _password = await readPassword('Creating wallet, enter a password (leave blank to auto-generate):')
   if (_password) {
     const confirm = await readPassword('Confirm password:')
     if (_password !== confirm) {
