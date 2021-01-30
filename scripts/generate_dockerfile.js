@@ -12,8 +12,12 @@ secrets:
     file: ${passwordFilePath}`
 }
 
-function fuelBlock(network, walletPath) {
+async function fuelBlock(network, walletPath) {
   const dbDir = `.fueldb-${network}`
+  const dbPath = path.join(process.cwd(), 'data', dbDir)
+  await fs.mkdir(dbPath, {
+    recursive: true,
+  })
   return `
   fuel:
     image: rollupsync/fuel:v1.0.1
@@ -51,7 +55,7 @@ function fuelBlock(network, walletPath) {
       process.exit(1)
     }
     const composeFile = `${composeHeader}
-${fuelBlock(NETWORK, WALLET_PATH)}
+${await fuelBlock(NETWORK, WALLET_PATH)}
 ${secretsBlock(PASSWORD_PATH)}`
 
     await fs.writeFile(composePath, composeFile)
