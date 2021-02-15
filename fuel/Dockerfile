@@ -1,12 +1,14 @@
 FROM alpine:latest as buildstage
 MAINTAINER Chance Hudson
 
+ARG BRANCH=v1.0.1-beta
+
 RUN apk add nodejs-npm git python3 make g++
 
 RUN git clone \
   -c advice.detachedHead=false \
   --depth 1 \
-  --branch v1.0.1-beta \
+  --branch $BRANCH \
   https://github.com/FuelLabs/fuel-js.git /src
 WORKDIR /src
 
