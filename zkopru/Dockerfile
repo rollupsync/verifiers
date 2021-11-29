@@ -1,9 +1,9 @@
 FROM alpine:latest as buildstage
 MAINTAINER Chance Hudson
 
-ARG BRANCH=misc-fixes
+ARG BRANCH=main
 
-RUN apk add nodejs-npm git && \
+RUN apk add nodejs npm git && \
   npm i -g yarn
 
 RUN git clone \
@@ -17,7 +17,7 @@ RUN yarn && yarn build
 
 FROM alpine:latest
 
-RUN apk add --no-cache nodejs-npm
+RUN apk add --no-cache nodejs npm
 
 COPY --from=buildstage /src /src
 
